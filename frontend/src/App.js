@@ -1,9 +1,8 @@
-import './App.css';
 import { SearchRestaurantForm } from './components/search-restaurant-form/search-restaurant-form';
 
 function App() {
   return (
-    <div className="App">
+    <div className="flex items-center flex-col bg-slate-300 pt-4 min-h-screen">
       <SearchRestaurantForm/>
     </div>
   );

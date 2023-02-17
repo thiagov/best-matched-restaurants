@@ -26,18 +26,20 @@ public class RestaurantControllerTest {
             .andExpect(content().contentType("application/json"))
             .andExpect(jsonPath("$").isArray())
             .andExpect(jsonPath("$.length()", lessThanOrEqualTo(5)));
+    }
 
+    @Test
+    public void should_returnChowTable_when_distanceIsOneMaxPriceIsTenAndCuisineIsChinese() throws Exception {
         this.mockMvc
             .perform(get("/api/restaurants")
-                .param("name", "yummy")
-                .param("rating", "1")
-                .param("distance", "8")
-                .param("price", "50")
-                .param("cuisine", "afri"))
+                .param("distance", "1")
+                .param("price", "10")
+                .param("cuisine", "chinese"))
             .andExpect(status().isOk())
             .andExpect(content().contentType("application/json"))
             .andExpect(jsonPath("$").isArray())
-            .andExpect(jsonPath("$.length()", lessThanOrEqualTo(5)));
+            .andExpect(jsonPath("$.[0].name", is("Chow Table")))
+            .andExpect(jsonPath("$.length()", is(1)));
     }
 
     @Test

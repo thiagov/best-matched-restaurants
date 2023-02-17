@@ -20,18 +20,17 @@ public class RestaurantService {
   private List<RestaurantFilter> filters;
 
   public List<Restaurant> searchRestaurant(SearchRestaurantsInputDto inputDto) {
-    List<Restaurant> allRestaurants = restaurantRepository.findAll();
-
     Predicate<Restaurant> filterPredicate = filters.stream()
         .map(f -> f.buildPredicate(inputDto))
         .reduce(r -> true, Predicate::and);
 
-    List<Restaurant> filteredRestaurants = allRestaurants.stream()
+    Comparator<Restaurant> sortRule = Comparator.comparing(Restaurant::getDistance)
+        .thenComparing(Restaurant::getCustomerRating, Comparator.reverseOrder())
+        .thenComparing(Restaurant::getPrice);
+
+    List<Restaurant> filteredRestaurants = restaurantRepository.findAll().stream()
         .filter(filterPredicate)
-        .sorted(
-            Comparator.comparing(Restaurant::getDistance)
-                .thenComparing(Restaurant::getCustomerRating, Comparator.reverseOrder())
-                .thenComparing(Restaurant::getPrice))
+        .sorted(sortRule)
         .collect(Collectors.toList());
 
     return filteredRestaurants.subList(0, Math.min(filteredRestaurants.size(), 5));

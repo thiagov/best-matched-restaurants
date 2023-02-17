@@ -36,12 +36,13 @@ public class RestaurantController {
     if (bindingResult.hasErrors()) {
       String message = bindingResult.getFieldErrors().stream()
           .map(fe -> fe.getField() + " has an invalid value")
-          .collect(Collectors.joining("\n"));
+          .collect(Collectors.joining(" "));
       throw new InvalidFilterException(message);
     }
     List<Restaurant> restaurants = restaurantService.searchRestaurant(inputDto);
     List<RestaurantDto> restaurantsDTO = restaurants.stream()
-        .map(r -> new RestaurantDto(r)).collect(Collectors.toList());
+        .map(RestaurantDto::new)
+        .collect(Collectors.toList());
     return restaurantsDTO;
   }
 

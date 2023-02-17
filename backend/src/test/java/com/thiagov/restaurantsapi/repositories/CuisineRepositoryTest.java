@@ -10,26 +10,26 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 @SpringBootTest
 public class CuisineRepositoryTest {
 
-    @Autowired
-    CuisineRepository cuisineRepository;
+  @Autowired
+  CuisineRepository cuisineRepository;
 
-    @Test
-    public void should_returnAllCuisinesFromCsv() {
-        assertTrue(cuisineRepository.findAll().size() == 19);
-    }
+  @Test
+  public void should_returnAllCuisinesFromCsv() {
+    assertTrue(cuisineRepository.findAll().size() == 19);
+  }
 
-    @Test
-    public void should_returnCuisineWithSpecificId_when_correctIdGiven() {
-        Cuisine result = cuisineRepository.findById(5);
-        assertTrue(result.getId() == 5);
-    }
+  @Test
+  public void should_returnCuisineWithSpecificId_when_correctIdGiven() {
+    Cuisine result = cuisineRepository.findById(5);
+    assertTrue(result.getId() == 5);
+  }
 
-    @Test
-    public void should_returnNull_when_outOfBounds() {
-        Cuisine result = cuisineRepository.findById(20);
-        assertTrue(result == null);
+  @Test
+  public void should_returnNull_when_outOfBounds() {
+    Cuisine result = cuisineRepository.findById(20);
+    assertTrue(result == null);
 
-        result = cuisineRepository.findById(0);
-        assertTrue(result == null);
-    }
+    result = cuisineRepository.findById(0);
+    assertTrue(result == null);
+  }
 }

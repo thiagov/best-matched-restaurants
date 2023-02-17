@@ -8,11 +8,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 public class RestaurantRepositoryTest {
-    @Autowired
-    RestaurantRepository restaurantRepository;
+  @Autowired
+  RestaurantRepository restaurantRepository;
 
-    @Test
-    public void should_returnAllRestaurantsFromCsv() {
-        assertTrue(restaurantRepository.findAll().size() == 200);
-    }
+  @Test
+  public void should_returnAllRestaurantsFromCsv() {
+    assertTrue(restaurantRepository.findAll().size() == 200);
+  }
 }

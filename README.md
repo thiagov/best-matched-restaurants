@@ -88,7 +88,7 @@ The following was used to build the front-end:
 
 To build and run the application you need `npm` installed. Before running or building the project you need to install all its dependencies, which can be done by running the following command:
 ```
-npm install
+npm ci
 ```
 
 With the dependencies installed, you can start a dev server on `http://localhost:3000/` by running:

@@ -1,7 +1,8 @@
 # Find Best Matched Restaurants
-
 This project is a simple application that searches for restaurants based on some filters.
 The application is divided in a React front-end and a back-end Java API.
+
+![Screen Shot 2023-02-17 at 12 19 51](https://user-images.githubusercontent.com/511398/219694052-72ab28e7-9853-44dc-ac01-2953d3dff44a.png)
 
 ## Running with Docker
 The application can be run with Docker. To do that you just need to run the provided Makefile on the project root.

@@ -1,4 +1,4 @@
-import { SearchRestaurantForm } from './components/search-restaurant-form/search-restaurant-form';
+import { SearchRestaurantForm } from './components/search-restaurant-form';
 
 function App() {
   return (

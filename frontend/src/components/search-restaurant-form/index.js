@@ -39,7 +39,7 @@ export const SearchRestaurantForm = () => {
 
           <ErrorAlert errorMessage={errorMessage}/>
 
-          <div className="grid grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
             <Input type="text" name="name" value={name} label="Name" onChange={(e) => setName(e.target.value)}/>
             <Input type="number" name="rating" value={rating} label="Min rating" onChange={(e) => setRating(e.target.value)} min="1" max="5"/>
             <Input type="number" name="distance" value={distance} label="Max distance" onChange={(e) => setDistance(e.target.value)} min="1" max="10"/>

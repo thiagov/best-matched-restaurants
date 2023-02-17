@@ -30,7 +30,7 @@ const Restaurant = ({ restaurant }) => (
 const Rating = ({ value }) => (
   <>
     {
-      [...Array(value)].map(() => <span className="text-yellow-500 ml-0.5">&#9733;</span>)
+      [...Array(value)].map((_value, index) => <span key={index} className="text-yellow-500 ml-0.5">&#9733;</span>)
     }
   </>
 );

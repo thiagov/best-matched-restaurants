@@ -19,7 +19,7 @@ const Restaurant = ({restaurant}) => (
       <div className='flex-auto w-64'>
         <RestaurantInfo label='Name' value={restaurant.name} />
         <RestaurantInfo label='Rating' value={<Rating value={restaurant.customerRating} />} />
-        <RestaurantInfo label='Price' value={`$${restaurant.price}`} />
+        <RestaurantInfo label='Price' value={`$${restaurant.price} on average`} />
         <RestaurantInfo label='Distance' value={`${restaurant.distance} mile${restaurant.distance > 1 ? 's' : ''}`} />
         <RestaurantInfo label='Cuisine' value={restaurant.cuisine.name} />
       </div>

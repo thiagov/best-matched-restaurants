@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { RestaurantList } from '../restaurant-list';
+import Icon from '@mdi/react';
+import { mdiFilterCog, mdiListBox } from '@mdi/js';
 
 export const SearchRestaurantForm = () => {
   const [restaurants, setRestaurants] = useState([]);
-  const [errorMessage, setErrorMessage] = useState(undefined);
+  const [errorMessage, setErrorMessage] = useState();
   const [name, setName] = useState('');
-  const [price, setPrice] = useState(undefined);
-  const [rating, setRating] = useState(undefined);
-  const [distance, setDistance] = useState(undefined);
+  const [price, setPrice] = useState();
+  const [rating, setRating] = useState();
+  const [distance, setDistance] = useState();
   const [cuisine, setCuisine] = useState('');
 
   useEffect(() => {
@@ -34,8 +36,12 @@ export const SearchRestaurantForm = () => {
 
   return (
     <>
+      <div className='pb-4 flex gap-2 text-gray-500 items-center text-sm w-full max-w-lg pl-0.5 justify-center sm:justify-start'>
+        <Icon path={mdiFilterCog} size={0.7} />
+        <span className='font-bold'>Filters</span>
+      </div>
       <div className='w-full max-w-lg'>
-        <form onSubmit={onSubmit} className='bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4'>
+        <form onSubmit={onSubmit} className='bg-white shadow-md rounded px-4 py-4 mb-4'>
 
           <ErrorAlert errorMessage={errorMessage} />
 
@@ -55,18 +61,34 @@ export const SearchRestaurantForm = () => {
       </div>
 
       <div className='w-full max-w-lg'>
-        <RestaurantList restaurants={restaurants} />
+        <div className='pb-4 flex gap-2 text-gray-500 items-center text-sm w-full max-w-lg pl-0.5 justify-center sm:justify-start'>
+          <Icon path={mdiListBox} size={0.7} />
+          <span className='font-bold'>Best matching restaurants</span>
+        </div>
+        {restaurants?.length > 0 ? (
+          <RestaurantList restaurants={restaurants} />
+        ) : (
+          <div className='text-center'>No results found. Try changing some filters.</div>
+        )}
       </div>
     </>
   )
 };
 
 const Input = ({type, name, value, label, onChange, min, max}) => (
-  <div className='mb-4'>
+  <div>
     <label className='block text-gray-700 text-sm font-bold mb-2'>
       {label}
     </label>
-    <input name={name} type={type} value={value || ''} onChange={onChange} min={min} max={max} className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline' />
+    <input
+      name={name}
+      type={type}
+      value={value || ''}
+      onChange={onChange}
+      min={min}
+      max={max}
+      className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+    />
   </div>
 );
 
